@@ -1,0 +1,52 @@
+.add-movie, .add-category{
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.726);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.add-form {
+    background-color: black;
+    margin: 22px;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.add-button{
+    max-width: 164px;
+    max-height: 286px;
+    transition: transform 0.3s;
+}
+
+.add-button:hover{
+    transition: transform 0.3s;
+    transform: scale(1.2);
+}
+
+.add-category-button{
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 5px 10px 5px 10xp;
+}
+
+.add-category-button:hover{
+    background-color:  white;
+}
+
+.text-input{
+    border-radius: 4px;
+}
+
+.text-input:focus{
+  border: 2px solid #e50914;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+

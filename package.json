@@ -1,0 +1,28 @@
+{
+  "name": "netflix-clone",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.744.0",
+    "body-parser": "^1.19.0",
+    "consolidate": "^0.15.1",
+    "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "mongoose": "^5.10.0",
+    "mongoose-findorcreate": "^3.0.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "export NODE_ENV='development' && sudo systemctl start mongod && nodemon app.js",
+    "drop-movies": "echo 'db.movies.drop()' | mongo netflixClone",
+    "drop-users": "echo 'db.users.drop()' | mongo netflixClone",
+    "drop-categories": "echo 'db.categories.drop()' | mongo netflixClone"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
