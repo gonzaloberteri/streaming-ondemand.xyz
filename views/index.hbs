@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Netflix Clone</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dash-streaming.xyz/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dash-streaming.xyz/assets/images/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://dash-streaming.xyz/assets/images/assets/images/favicon.ico">
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../src/main.js"></script>
 </head>
@@ -41,8 +44,9 @@
             <h1>{{text}}</h1>
             <div class="box">
                 {{#each movies}}
-                <a href="" class="movie"><img
-                        src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true"
+                <a href="https://dash-streaming.xyz/player/{{this._id}}" class="movie"><img
+                        {{!-- src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true" --}}
+                        src="https://cdn.dash-streaming.xyz/{{this.fileName}}-thumb.jpg"
                         alt="" /></a>
                 {{/each}}
             </div>

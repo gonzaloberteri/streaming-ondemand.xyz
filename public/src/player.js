@@ -1,6 +1,3 @@
-const manifestUri =
-    'https://cdn.dash-streaming.xyz/small.mpd';
-
 function initApp() {
   // Install built-in polyfills to patch browser incompatibilities.
   shaka.polyfill.installAll();
@@ -19,6 +16,7 @@ async function initPlayer() {
   // Create a Player instance.
   const video = document.getElementById('video');
   const player = new shaka.Player(video);
+  const manifestUri = video.getAttribute('uri');
 
   // Attach player to the window to make it easy to access in the JS console.
   window.player = player;

@@ -12,6 +12,9 @@ let Token = new Schema(
     },
     file: {
       type: String
+    },
+    used: {
+      type: Boolean
     }
   },
   { collection: 'tokens' }

@@ -1,4 +1,4 @@
-var app = require('express')();
+var app = require("express")();
 const Category = require("../model/category");
 const Movie = require("../model/movie");
 
@@ -8,7 +8,7 @@ app.get("/admin", (req, res) => {
             .lean()
             .exec((err, categories) => {
                 if (!err) {
-                    Movie.find()
+                    Movie.find({ visible: true })
                         .lean()
                         .exec((err, movies) => {
                             if (!err) {
@@ -16,17 +16,17 @@ app.get("/admin", (req, res) => {
                                     let category = categories.find(
                                         (category) => {
                                             return (
-                                                category.text ===
-                                                movie.category
+                                                category.text === movie.category
                                             );
                                         }
                                     );
 
-                                    const index = categories.indexOf(
-                                        category
-                                    );
+                                    const index = categories.indexOf(category);
 
-                                    if (category.hasOwnProperty("movies")) {
+                                    if (
+                                        category &&
+                                        category.hasOwnProperty("movies")
+                                    ) {
                                         categories[index].movie.push(movie);
                                     } else {
                                         categories[index] = {
@@ -35,10 +35,12 @@ app.get("/admin", (req, res) => {
                                         };
                                     }
                                 });
+
                                 res.render("admin", {
                                     categories,
                                     user: req.user.toObject(),
                                 });
+                                
                             } else {
                                 res.send(err);
                             }

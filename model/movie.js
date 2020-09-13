@@ -10,10 +10,13 @@ let Movie = new Schema(
     category: {
       type: String
     },
-    thumbnail: {
+    fileName: {
       type: String
     },
-    movie: {
+    visible: {
+      type: Boolean
+    },
+    uploadToken: {
       type: String
     }
   },

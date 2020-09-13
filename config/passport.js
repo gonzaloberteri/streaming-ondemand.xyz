@@ -9,7 +9,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "/auth/google/redirect",
+            callbackURL: process.env.NODE_ENV === "production" ? "https://dash-streaming.xyz/auth/google/redirect" : "/auth/google/redirect",
         },
         (accessToken, refreshToken, profile, done) => {
             User.findOrCreate(

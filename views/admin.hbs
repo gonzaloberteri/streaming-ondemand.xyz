@@ -5,6 +5,9 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Netflix Clone</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="https://dash-streaming.xyz/assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://dash-streaming.xyz/assets/images/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://dash-streaming.xyz/assets/images/assets/images/favicon.ico">
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/admin.css" />
 </head>
@@ -25,13 +28,13 @@
 				<a href="#originals">Originals</a>
 				<a href="#">Recently Added</a>
 			</nav>
-            <nav class="sub-nav">
-                {{!-- <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
+			<nav class="sub-nav">
+				{{!-- <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
                 <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a> --}}
-                <a href="account">
-                    <img src="{{user.photo}}" class="profile-pic" alt="profile picture">
-                </a>
-            </nav>
+				<a href="account">
+					<img src="{{user.photo}}" class="profile-pic" alt="profile picture">
+				</a>
+			</nav>
 		</header>
 		<!-- END OF HEADER -->
 
@@ -48,126 +51,12 @@
 				<a onclick="toggleForm('add-movie','{{text}}')"><img src="../assets/images/add.svg" alt=""
 						class="add-button" /></a>
 				{{#each movies}}
-
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true"
+				<a href="https://dash-streaming.xyz/player/{{this._id}}" class="movie"><img
+                        src="https://cdn.dash-streaming.xyz/{{this.fileName}}-thumb.jpg"
 						alt="" /></a>
 				{{/each}}
 			</div>
 			{{/each}}
-			{{!-- <div class="location" id="home">
-				<h1 id="home">Popular on Netflix</h1>
-				<div class="box">
-					<a onclick="toggleForm()"><img src="../assets/images/add.svg" alt="" class="add-button" /></a>
-				</div>
-			</div>
-
-			<h1 id="myList">Trending Now</h1>
-			<div class="box">
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t1.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t2.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t3.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t4.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t5.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t6.PNG?raw=true"
-						alt="" /></a>
-			</div>
-
-			<h1 id="tvShows">TV Shows</h1>
-			<div class="box">
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv2.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv3.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv4.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv5.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv6.PNG?raw=true"
-						alt="" /></a>
-
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv7.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv8.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv9.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv10.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv11.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv12.PNG?raw=true"
-						alt="" /></a>
-			</div>
-
-			<h1 id="movies">Blockbuster Action & Adventure</h1>
-			<div class="box">
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m1.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m2.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m3.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m4.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m5.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/m6.PNG?raw=true"
-						alt="" /></a>
-			</div>
-
-			<h1 id="originals">Netflix Originals</h1>
-			<div class="box">
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o1.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o2.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o3.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o4.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o5.PNG?raw=true"
-						alt="" /></a>
-				<a href="" class="movie"><img
-						src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/o6.PNG?raw=true"
-						alt="" /></a>
-			</div> --}}
 		</section>
 		<!-- END OF MAIN CONTAINER -->
 
@@ -217,7 +106,8 @@
 		</form>
 	</div>
 	<div class="add-category" onclick="toggleForm('add-category')">
-		<form action="/add-category" method="post" encType="multipart/form-data" class="add-form" onclick="disablePropagation()">
+		<form action="/add-category" method="post" encType="application/json" class="add-form"
+			onclick="disablePropagation()">
 			<label for="title">Category:</label><br>
 			<input type="text" id="title" name="category_text" class="text-input"><br>
 			<label for="id">ID:</label><br>

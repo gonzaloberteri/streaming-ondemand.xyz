@@ -5,74 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Netflix Clone</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dash-streaming.xyz/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dash-streaming.xyz/assets/images/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://dash-streaming.xyz/assets/images/assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/player.css" />
     <script src="../src/shaka-player.compiled.js"></script>
     <script src="../src/player.js"></script>
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- HEADER -->
-        <header>
-            <div class="netflixLogo">
-                <a id="logo" href="#home"><img
-                        src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true"
-                        alt="Logo Image" /></a>
-            </div>
-            <nav class="main-nav">
-                <a href="#home">Home</a>
-                <a href="#tvShows">TV Shows</a>
-                <a href="#movies">Movies</a>
-                <a href="#originals">Originals</a>
-                <a href="#">Recently Added</a>
-            </nav>
-            <nav class="sub-nav">
-                {{!-- <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
-                <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a> --}}
-                <a href="account">
-                    <img src="{{user.photo}}" class="profile-pic" alt="profile picture">
-                </a>
-            </nav>
-        </header>
-        <!-- END OF HEADER -->
-
-        <!-- MAIN CONTAINER -->
-        <video id="video" width="640" poster="//shaka-player-demo.appspot.com/assets/poster.jpg" controls
-            autoplay></video>
-        <!-- END OF MAIN CONTAINER -->
-
-        <!-- LINKS -->
-        <section class="link">
-            <div class="logos">
-                <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
-                <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
-                <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
-                <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
-            </div>
-            <div class="sub-links">
-                <ul>
-                    <li><a href="#">Audio and Subtitles</a></li>
-                    <li><a href="#">Audio Description</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Gift Cards</a></li>
-                    <li><a href="#">Media Center</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Legal Notices</a></li>
-                    <li><a href="#">Corporate Information</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </section>
-        <!-- END OF LINKS -->
-
-        <!-- FOOTER -->
-        <footer>
-            <p>&copy 1997-2018 Netflix, Inc.</p>
-        </footer>
-    </div>
+    <video id="video" uri="https://cdn.dash-streaming.xyz/{{movie.fileName}}.mpd"
+        poster="//cdn.dash-streaming.xyz/{{movie.fileName}}-thumb.jpg" controls autoplay></video>
 </body>
 
 </html>

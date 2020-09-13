@@ -5,7 +5,7 @@ const Movie = require("../model/movie");
 app.get("/", (req, res) => {
     if (req.isAuthenticated()) {
         let categories = [];
-        Movie.find().exec((err, movies) => {
+        Movie.find({visible: true}).lean().exec((err, movies) => {
             if (!err) {
                 movies.forEach((movie) => {
                     const found = categories.find((element) => {
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
         });
     } else {
         res.sendFile(
-            path.join(__dirname,"..", "public", "html", "landing.html")
+            path.join(__dirname, "..","views", "landing.html")
         );
     }
 });
