@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Netflix Clone</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://dash-streaming.xyz/assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://dash-streaming.xyz/assets/images/favicon-16x16.png">
-    <link rel="shortcut icon" href="https://dash-streaming.xyz/assets/images/assets/images/favicon.ico">
+    <title>Brand name</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dash-streaming.xyz/assets/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dash-streaming.xyz/assets/favicon/favicon-16x16.png?v=2">
+    <link rel="shortcut icon" href="https://dash-streaming.xyz/assets/images/assets/favicon/favicon.ico?v=2">
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../src/main.js"></script>
 </head>
@@ -16,9 +16,8 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header>
-            <div class="netflixLogo">
-                <a id="logo" href="#home"><img
-                        src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true"
+            <div class="brandLogo">
+                <a id="logo" href="/"><img src="https://dash-streaming.xyz/assets/images/logo.png"
                         alt="Logo Image" /></a>
             </div>
             <nav class="main-nav">
@@ -44,10 +43,9 @@
             <h1>{{text}}</h1>
             <div class="box">
                 {{#each movies}}
-                <a href="https://dash-streaming.xyz/player/{{this._id}}" class="movie"><img
-                        {{!-- src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true" --}}
-                        src="https://cdn.dash-streaming.xyz/{{this.fileName}}-thumb.jpg"
-                        alt="" /></a>
+                <a href="https://dash-streaming.xyz/player/{{this._id}}" class="movie">
+                    <img src="https://cdn.dash-streaming.xyz/{{this.fileName}}-thumb.jpg" alt="" />
+                </a>
                 {{/each}}
             </div>
             {{/each}}
@@ -82,7 +80,7 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>&copy 1997-2018 Netflix, Inc.</p>
+            <p>&copy 2020-2020 Brand name, Inc.</p>
         </footer>
     </div>
 </body>

@@ -3,7 +3,7 @@ const Category = require("../model/category");
 const Movie = require("../model/movie");
 
 app.get("/admin", (req, res) => {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user.email === "gonzaloberteri@gmail.com") {
         Category.find()
             .lean()
             .exec((err, categories) => {
