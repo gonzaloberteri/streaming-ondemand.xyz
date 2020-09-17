@@ -17,7 +17,7 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js > my_app_log.log 2> my_app_err.log",
     "dev": "export NODE_ENV='development' && sudo systemctl start mongod && nodemon app.js",
     "zip": "rm -rf ../netflix-clone-build.zip && zip ../netflix-clone-build.zip -r * .[^.]* -x '*.git*' -x 'node_modules/*'",
     "drop-movies": "echo 'db.movies.drop()' | mongo netflixClone",

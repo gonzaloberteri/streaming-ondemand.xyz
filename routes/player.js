@@ -3,7 +3,7 @@ var cors = require("cors");
 const Movie = require("../model/movie");
 
 var corsOptions = {
-    origin: "https://cdn.dash-streaming.xyz",
+    origin: "https://cdn.streaming-ondemand.xyz",
     methods: "GET, HEAD, OPTIONS",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };

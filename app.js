@@ -45,7 +45,6 @@ if (cluster.isMaster && process.env.NODE_ENV === "production") {
     
     app.use(require("./routes/index"));
     app.use(require("./routes/player"));
-    app.use(require("./routes/admin"));
     app.use(require("./routes/api/addCategory"));
     app.use(require("./routes/api/addMovie"));
     app.use(require("./routes/auth/google"));

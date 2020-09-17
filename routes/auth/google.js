@@ -1,6 +1,6 @@
-var app = require('express')();
+var app = require("express")();
 var passport = require("passport");
-const cloudFront = require('../../config/aws');
+const cloudFront = require("../../config/aws");
 
 app.get(
     "/auth/google",
@@ -16,12 +16,12 @@ app.get(
         const policy = JSON.stringify({
             Statement: [
                 {
-                    Resource: "http*://cdn.dash-streaming.xyz/*", // http* => http and https
+                    Resource: "http*://cdn.streaming-ondemand.xyz/*", // http* => http and https
                     Condition: {
                         DateLessThan: {
-                            "AWS:EpochTime":
-                                Math.floor(new Date().getTime() / 1000) +
-                                60 * 60 * 1, // Current Time in UTC + time in seconds, (60 * 60 * 1 = 1 hour)
+                            "AWS:EpochTime": Math.floor(
+                                req.user.expires.getTime() / 1000
+                            ), // Current Time in UTC + time in seconds, (60 * 60 * 1 = 1 hour)
                         },
                     },
                 },
@@ -33,19 +33,19 @@ app.get(
         });
 
         res.cookie("CloudFront-Key-Pair-Id", cookie["CloudFront-Key-Pair-Id"], {
-            domain: ".dash-streaming.xyz",
+            domain: ".streaming-ondemand.xyz",
             path: "/",
             httpOnly: true,
         });
 
         res.cookie("CloudFront-Policy", cookie["CloudFront-Policy"], {
-            domain: ".dash-streaming.xyz",
+            domain: ".streaming-ondemand.xyz",
             path: "/",
             httpOnly: true,
         });
 
         res.cookie("CloudFront-Signature", cookie["CloudFront-Signature"], {
-            domain: ".dash-streaming.xyz",
+            domain: ".streaming-ondemand.xyz",
             path: "/",
             httpOnly: true,
         });

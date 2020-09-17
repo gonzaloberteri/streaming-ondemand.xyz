@@ -1,41 +1,49 @@
-var app = require('express')();
+var app = require("express")();
 const path = require("path");
 const Movie = require("../model/movie");
+const Category = require("../model/category");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
     if (req.isAuthenticated()) {
+
         let categories = [];
-        Movie.find({visible: true}).lean().exec((err, movies) => {
-            if (!err) {
-                movies.forEach((movie) => {
-                    const found = categories.find((element) => {
-                        return element.text === movie.category;
-                    });
+        let movies = [];
 
-                    if (found) {
-                        categories[categories.indexOf(found)].movies.push(
-                            movie
-                        );
-                    } else {
-                        categories.push({
-                            text: movie.category,
-                            movies: [movie],
-                        });
-                    }
+        if (req.user.isEditor) {
+            categories = await Category.find().lean();
+        }
+
+        movies = await Movie.find({ visible: true }).lean();
+
+        movies.forEach(async (movie, index) => {
+            const category = await Category.findById(movie.category);
+
+            let found = categories.find((element) => {
+                return element.text === category.text;
+            });
+
+
+            if (found) {
+                const index = categories.indexOf(found);
+                if (categories[index].movies === undefined) categories[index].movies = [];
+                categories[index].movies.push(movie);
+            } else {
+                categories.push({
+                    text: category.text,
+                    movies: [movie]
                 });
+            }
 
-                res.render("index", {
+            if (index === movies.length - 1) {
+                //console.log(categories);
+                res.render(req.user.isEditor ? "admin" : "index", {
                     categories,
                     user: req.user.toObject(),
                 });
-            } else {
-                res.send(err);
             }
         });
     } else {
-        res.sendFile(
-            path.join(__dirname, "..","views", "landing.html")
-        );
+        res.sendFile(path.join(__dirname, "..", "views", "landing.html"));
     }
 });
 

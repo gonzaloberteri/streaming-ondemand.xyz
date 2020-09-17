@@ -5,6 +5,9 @@ const Schema = mongoose.Schema;
 
 let User = new Schema(
   {
+    isEditor: {
+      type: Boolean
+    },
     googleId: {
       type: String
     },
@@ -17,6 +20,9 @@ let User = new Schema(
     photo: {
       type: String
     },
+    expires: {
+      type: Date
+    }
   },
   { collection: 'users' }
 ).plugin(findOrCreate);

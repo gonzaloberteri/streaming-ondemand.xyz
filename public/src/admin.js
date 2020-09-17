@@ -43,7 +43,7 @@ function uploadMovie() {
         fileName: movieInput.files[0].name,
     };
 
-    fetch("https://dash-streaming.xyz/add-movie", {
+    fetch("https://streaming-ondemand.xyz/add-movie", {
         method: "POST",
         body: JSON.stringify(movie),
         headers: {

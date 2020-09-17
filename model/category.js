@@ -6,9 +6,6 @@ let User = new Schema(
   {
     text: {
       type: String
-    },
-    id: {
-      type: String
     }
   },
   { collection: 'categories' }

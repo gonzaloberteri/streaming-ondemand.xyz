@@ -9,9 +9,11 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: process.env.NODE_ENV === "production" ? "https://dash-streaming.xyz/auth/google/redirect" : "/auth/google/redirect",
+            callbackURL: process.env.NODE_ENV === "production" ? "https://streaming-ondemand.xyz/auth/google/redirect" : "/auth/google/redirect",
         },
         (accessToken, refreshToken, profile, done) => {
+            let nextMonth = new Date(Date.now() + 3600 * 1000 * 24 * 30);
+
             User.findOrCreate(
                 {
                     googleId: profile.id,
@@ -19,6 +21,7 @@ passport.use(
                     email: profile.emails[0].value,
                     photo: profile.photos[0].value,
                 },
+                { expires: nextMonth},
                 (err, user) => {
                     return done(err, user);
                 }
