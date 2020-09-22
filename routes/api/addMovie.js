@@ -16,6 +16,9 @@ app.post("/add-movie", cors(corsOptions), function (req, res) {
     const thumbnail = req.body.thumbnail;
     const fileName = req.body.fileName;
     if (
+        req.isAuthenticated &&
+        req.user &&
+        req.user.isEditor &&
         title &&
         title.length <= 40 &&
         category &&

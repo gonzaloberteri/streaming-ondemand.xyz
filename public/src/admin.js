@@ -6,7 +6,7 @@ function getStyle(element, name) {
         : null;
 }
 
-function toggleForm(formName, categoryName = null) {
+function toggleForm(formName) {
     const form = document.getElementsByClassName(formName)[0];
     const body = document.getElementsByTagName("body")[0];
     const display = window
@@ -16,17 +16,13 @@ function toggleForm(formName, categoryName = null) {
         form.style.display = "block";
         body.classList.add("no-scroll");
 
-        if (formName == "add-movie") {
-            categoryInput = document.getElementById("categoryInput");
-            categoryInput.value = categoryName;
-        }
     } else {
         form.style.display = "none";
         body.classList.remove("no-scroll");
     }
 }
 
-function disablePropagation() {
+function disablePropagation(event) {
     event.stopPropagation();
 }
 
@@ -42,6 +38,8 @@ function uploadMovie() {
         thumbnail: thumbnailInput.files[0].name,
         fileName: movieInput.files[0].name,
     };
+
+    console.log(movie);
 
     fetch("https://streaming-ondemand.xyz/add-movie", {
         method: "POST",
@@ -67,6 +65,13 @@ function uploadDashy(token, movieInput) {
     fetch("https://localhost:3000/upload-movie", {
         method: "POST",
         body: formData,
-        
     }).catch((error) => console.error("Error:", error));
+}
+
+function editMovie(e, id) {
+    alert(id);
+}
+
+function closeFab(){
+    document.getElementById("checkbox").checked = false;
 }

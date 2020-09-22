@@ -19,12 +19,17 @@
   "scripts": {
     "start": "node app.js > my_app_log.log 2> my_app_err.log",
     "dev": "export NODE_ENV='development' && sudo systemctl start mongod && nodemon app.js",
+    "test": "export NODE_ENV='testing' && nodemon --exec 'mocha */**.spec.js'",
     "zip": "rm -rf ../netflix-clone-build.zip && zip ../netflix-clone-build.zip -r * .[^.]* -x '*.git*' -x 'node_modules/*'",
     "drop-movies": "echo 'db.movies.drop()' | mongo netflixClone",
     "drop-users": "echo 'db.users.drop()' | mongo netflixClone",
     "drop-categories": "echo 'db.categories.drop()' | mongo netflixClone"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "chai": "^4.2.0",
+    "nodemon": "^2.0.4",
+    "passport-mock-strategy": "^2.0.0",
+    "superagent": "^6.1.0",
+    "supertest": "^4.0.2"
   }
 }

@@ -1,24 +1,9 @@
-const videos = document.getElementsByClassName('video');
+function hover(element) {
+    const filename = element.getAttribute('file');
+    element.setAttribute("src", `https://cdn.streaming-ondemand.xyz/${filename}-preview.gif`);
+}
 
-window.onload = function () {
-    for (let video of videos) {
-        video.addEventListener('mouseover', function () {
-            this.play();
-        });
-
-        video.addEventListener('mouseout', function () {
-            this.pause();
-            this.currentTime = 0;
-        });
-
-        video.addEventListener('touchstart', function () {
-            this.play();
-        });
-
-        video.addEventListener('touchend', function () {
-            this.pause();
-        });
-    }
-
-    //console.log(videos);
-};
+function unhover(element) {
+    const filename = element.getAttribute('file');
+    element.setAttribute("src", `https://cdn.streaming-ondemand.xyz/${filename}-thumb.jpg`);
+}

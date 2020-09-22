@@ -35,7 +35,6 @@ app.get("/", async (req, res) => {
             }
 
             if (index === movies.length - 1) {
-                //console.log(categories);
                 res.render(req.user.isEditor ? "admin" : "index", {
                     categories,
                     user: req.user.toObject(),

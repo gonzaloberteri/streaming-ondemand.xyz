@@ -11,14 +11,20 @@ var corsOptions = {
 app.post("/add-category", cors(corsOptions), (req, res) => {
     const categoryText = req.body.category_text;
 
-    if (categoryText && categoryText.length < 50) {
+    if (
+        req.isAuthenticated &&
+        req.user &&
+        res.user.isEditor &&
+        categoryText &&
+        categoryText.length < 50
+    ) {
         new Category({
             text: categoryText,
         }).save(() => {
-            res.redirect("/admin");
+            res.redirect("/");
         });
     } else {
-        res.send("err: bad parameters");
+        res.status(403);
     }
 });
 

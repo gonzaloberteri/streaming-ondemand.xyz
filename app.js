@@ -36,7 +36,6 @@ if (cluster.isMaster && process.env.NODE_ENV === "production") {
     app.use(require("./config/cookieSession"));
     app.use(passport.initialize());
     app.use(passport.session());
-    //app.use(require("./config/cors"));
 
     require("./config/aws");
     require("./config/passport");
@@ -53,7 +52,12 @@ if (cluster.isMaster && process.env.NODE_ENV === "production") {
 
     var port = process.env.PORT || 5000;
 
-    var server = app.listen(port, function () {
-        console.log("Server running at http://127.0.0.1:" + port + "/");
-    });
+
+    if(require.main === module){
+        app.listen(port, function () {
+            console.log("Server running at port " + port );
+        });
+    }
+
+    module.exports = app;
 }

@@ -5,8 +5,10 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Brand name</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="https://streaming-ondemand.xyz/assets/favicon/favicon-32x32.png?v=2">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://streaming-ondemand.xyz/assets/favicon/favicon-16x16.png?v=2">
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="https://streaming-ondemand.xyz/assets/favicon/favicon-32x32.png?v=2">
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="https://streaming-ondemand.xyz/assets/favicon/favicon-16x16.png?v=2">
 	<link rel="shortcut icon" href="https://streaming-ondemand.xyz/assets/images/assets/favicon/favicon.ico?v=2">
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/admin.css" />
@@ -17,8 +19,7 @@
 		<!-- HEADER -->
 		<header>
 			<div class="brandLogo">
-				<a id="logo" href="/"><img
-						src="https://streaming-ondemand.xyz/assets/images/logo.png"
+				<a id="logo" href="/"><img src="https://streaming-ondemand.xyz/assets/images/logo.png"
 						alt="Logo Image" /></a>
 			</div>
 			<nav class="main-nav">
@@ -29,7 +30,7 @@
 				<a href="#">Recently Added</a>
 			</nav>
 			<nav class="sub-nav">
-				<a href="account">
+				<a href="auth/logout">
 					<img src="{{user.photo}}" class="profile-pic" alt="profile picture">
 				</a>
 			</nav>
@@ -38,20 +39,28 @@
 
 		<!-- MAIN CONTAINER -->
 		<section class="main-container">
-			<h1>New category</h1>
+			{{!-- <h1>New category</h1>
 			<div class="box">
 				<button class="add-category-button" onclick="toggleForm('add-category')">Add category</button>
-			</div>
+			</div> --}}
 
 			{{#each categories}}
-			<h1 id="{{id}}">{{text}}</h1>
+			<h1>
+				<span>{{text}}<img src="../assets/svg/edit.svg" class="category-edit" alt="edit movie"
+						onclick="editMovie(event,'{{text}}'); return false;">
+				</span>
+			</h1>
 			<div class="box">
-				<a onclick="toggleForm('add-movie','{{text}}')"><img src="https://streaming-ondemand.xyz/assets/svg/add.svg" alt=""
-						class="add-button" /></a>
+				{{!-- <a onclick="toggleForm('add-movie','{{text}}')"><img
+						src="https://streaming-ondemand.xyz/assets/svg/add.svg" alt="" class="add-button" />
+				</a> --}}
 				{{#each movies}}
-				<a href="https://streaming-ondemand.xyz/player/{{this._id}}" class="movie"><img
-                        src="https://cdn.streaming-ondemand.xyz/{{this.fileName}}-thumb.jpg"
-						alt="" /></a>
+				<a href="https://streaming-ondemand.xyz/player/{{this._id}}" class="movie"
+					onclick="disablePropagation(event)">
+					<img src="https://cdn.streaming-ondemand.xyz/{{this.fileName}}-thumb.jpg" alt="" />
+					<img src="../assets/svg/edit.svg" class="movie-edit" alt="edit movie"
+						onclick="editMovie(event,'{{this._id}}'); return false;">
+				</a>
 				{{/each}}
 			</div>
 			{{/each}}
@@ -90,12 +99,29 @@
 			<p>&copy 2020-2020 Brand name, Inc.</p>
 		</footer>
 	</div>
+
+	<div class="fab-container">
+		<input type="checkbox" id="checkbox" />
+		<div class="fab"></div>
+		<div class="fac">
+			<img src="../assets/svg/add-movie.svg" alt="Add movie action" class="fas"
+				onclick="toggleForm('add-movie','{{text}}'); closeFab();">
+			<img src="../assets/svg/add-category.svg" alt="Add category action" class="fas"
+				onclick="toggleForm('add-category','{{text}}'); closeFab();">
+		</div>
+	</div>
+
+
 	<div class="add-movie" onclick="toggleForm('add-movie')">
-		<form action="/add-movie" class="add-form" onclick="disablePropagation();" onsubmit="return false;">
+		<form action="/add-movie" class="add-form" onclick="disablePropagation(event);" onsubmit="return false;">
 			<label for="title">Title:</label><br>
 			<input type="text" id="titleInput" name="movie_title"><br><br>
-			<label for="category">Category:</label><br>
-			<input id="categoryInput" name="movie_category" readonly="readonly"><br><br>
+			<label for="movie_category">Category:</label><br>
+			<select name="movie_category" id="categoryInput">
+				{{#each categories}}
+				<option value="{{text}}">{{text}}</option>
+				{{/each}}
+			</select><br><br>
 			<label for="thumbnail">Thumbnail:</label><br>
 			<input type="file" id="thumbnailInput" name="thumbnail" /><br><br>
 			<label for="movie">Movie:</label><br>
@@ -105,7 +131,7 @@
 	</div>
 	<div class="add-category" onclick="toggleForm('add-category')">
 		<form action="/add-category" method="post" encType="application/json" class="add-form"
-			onclick="disablePropagation()">
+			onclick="disablePropagation(event)">
 			<label for="title">Category:</label><br>
 			<input type="text" id="title" name="category_text" class="text-input"><br><br>
 			<button type="submit" class="add-category-button">Add category</button>

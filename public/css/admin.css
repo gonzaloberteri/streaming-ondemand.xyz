@@ -1,4 +1,11 @@
-.add-movie, .add-category{
+:root {
+    --fab-width: 50px;
+    --fab-height: 50px;
+    --fab-border-radius: 100%;
+}
+
+.add-movie,
+.add-category {
     position: fixed;
     display: none;
     width: 100vw;
@@ -8,6 +15,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 3;
 }
 
 .add-form {
@@ -17,36 +25,196 @@
     padding: 20px;
 }
 
-.add-button{
+.add-button {
     max-width: 164px;
     max-height: 286px;
     transition: transform 0.3s;
 }
 
-.add-button:hover{
+.add-button:hover {
     transition: transform 0.3s;
     transform: scale(1.2);
 }
 
-.add-category-button{
+.add-category-button {
     border-radius: 8px;
     font-size: 18px;
     padding: 5px 10px 5px 10xp;
 }
 
-.add-category-button:hover{
-    background-color:  white;
+.add-category-button:hover {
+    background-color: white;
 }
 
-.text-input{
+.text-input {
     border-radius: 4px;
 }
 
-.text-input:focus{
-  border: 2px solid #e50914;
+.text-input:focus {
+    border: 2px solid #e50914;
 }
 
 .no-scroll {
     overflow: hidden;
 }
 
+.movie-edit, .category-edit{
+    width: 15px;
+    position: absolute;
+    background: white;
+    right: -10px;
+    top: -10px;
+    padding: 12px;
+    border-radius: 13px !important;
+}
+
+.category-edit{
+    top: -6px;
+    right: -40px;
+}
+
+
+h1 span{
+    position: relative;
+}
+
+.fab-container {
+    width: var(--fab-width);
+    height: var(--fab-height);
+    position: relative;
+    border-radius: var(--fab-border-radius);
+    background-color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+.fab-container .fab {
+    background: var(--background);
+    width: var(--fab-width);
+    height: var(--fab-height);
+    position: relative;
+    z-index: 3;
+    border-radius: var(--fab-border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fab-animation-reverse 0.4s ease-out forwards;
+}
+.fab-container .fab::before,
+.fab-container .fab::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4px;
+    background: #fff;
+}
+.fab-container .fab::before {
+    width: 4px;
+    height: 18px;
+}
+.fab-container .fab::after {
+    width: 18px;
+    height: 4px;
+}
+.fab-container .fac {
+    width: 32px;
+    height: 100px;
+    border-radius: 64px;
+    position: absolute;
+    background: #fff;
+    z-index: 2;
+    padding: 0.5rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    top: -110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: opacity 0.2s ease-in, top 0.2s ease-in, width 0.1s ease-in;
+}
+.fab-container .fac a {
+    color: var(--red);
+    opacity: 0.8;
+}
+.fab-container .fac a:hover {
+    transition: 0.2s;
+    opacity: 1;
+    color: #30444f;
+}
+.fab-container input {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--fab-border-radius);
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+}
+.fab-container input:checked ~ .fab {
+    animation: fab-animation 0.4s ease-out forwards;
+}
+.fab-container input:checked ~ .fac {
+    width: 32px;
+    height: 100px;
+    animation: fac-animation 0.4s ease-out forwards 0.1s;
+    top: -120px;
+    opacity: 1;
+}
+.fas{
+    padding: 5px;
+}
+
+@keyframes fab-animation {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+    20% {
+        transform: rotate(60deg) scale(0.93);
+    }
+    55% {
+        transform: rotate(35deg) scale(0.97);
+    }
+    80% {
+        transform: rotate(48deg) scale(0.94);
+    }
+    100% {
+        transform: rotate(45deg) scale(0.95);
+    }
+}
+@keyframes fab-animation-reverse {
+    0% {
+        transform: rotate(45deg) scale(0.95);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+    55% {
+        transform: rotate(10deg);
+    }
+    80% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(0) scale(1);
+    }
+}
+@keyframes fac-animation {
+    0% {
+        transform: scale(1, 1);
+    }
+    33% {
+        transform: scale(0.95, 1.05);
+    }
+    66% {
+        transform: scale(1.05, 0.95);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
